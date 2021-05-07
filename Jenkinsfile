@@ -3,10 +3,39 @@ pipeline{
 	tools{nodejs "NodeJS"}
 	stages{
 	
+	
+	stage('Build'){
+		steps
+		{
+			echo 'Building'
+			sh 'npm install'
+		
+		
+	}
+	post {
+		always{
+			echo 'Finished'
+		}
+		success {
+			echo 'Success'
+		}
+		
+		failure {
+			echo 'Failure'
+			emailext attachLog: true,
+				body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}",
+				to: 'aleks33277@gmail.com',
+				subject: "Build failed"
+		}
+	
+	
+
+	}
+}
+	
 		stage('Test'){
 			steps{
 				echo 'Testing'
-				sh 'npma install'
 				sh 'npm run test'
 		}
 	}
