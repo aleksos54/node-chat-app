@@ -36,7 +36,7 @@ pipeline{
 		stage('Test'){
 			steps{
 				echo 'Testing'
-				sh 'npma run test'
+				sh 'npm run test'
 		}
 		
 		post{
