@@ -8,7 +8,7 @@ pipeline{
 		steps
 		{
 			echo 'Building'
-			sh 'npm install'
+			sh 'npma install'
 		
 		
 	}
